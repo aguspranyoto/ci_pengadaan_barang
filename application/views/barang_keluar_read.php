@@ -6,10 +6,10 @@
 <table class="table table-striped">
 	<thead class="thead-dark">
 		<tr>
-			<th>Id barang keluar</th>
+			<th>ID Barang Keluar</th>
 			<th>Jumlah</th>
 			<th>Tanggal</th>
-			<th>Nama barang</th>
+			<th>Nama Barang</th>
 			<th>User</th>
 			<th>Action</th>
 		</tr>

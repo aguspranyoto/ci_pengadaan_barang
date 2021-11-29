@@ -2,7 +2,7 @@
 <footer class="sticky-footer bg-white">
 <div class="container my-auto">
   <div class="copyright text-center my-auto">
-    <span>Perpustakaan</a></span>
+    <span>Website Pendataan Barang Inpiniscarves</span>
   </div>
 </div>
 </footer>

@@ -27,7 +27,7 @@ class Kategori_barang extends CI_Controller {
 		$output = array(
 						//memanggil view
 						'theme_page' => 'kategori_barang_read',
-						'judul' => 'Daftar kategori_barang',
+						'judul' => 'Daftar Kategori Barang',
 
 						//data kategori_barang dikirim ke view
 						'data_kategori_barang' => $data_kategori_barang
@@ -42,7 +42,7 @@ class Kategori_barang extends CI_Controller {
 		$output = array(
 						//memanggil view
 						'theme_page' => 'kategori_barang_insert',
-						'judul' => 'Tambah kategori_barang',
+						'judul' => 'Tambah Kategori Barang',
 					);
 
 		//memanggil file view
@@ -79,7 +79,7 @@ class Kategori_barang extends CI_Controller {
 		//mengirim data ke view
 		$output = array(
 						'theme_page' => 'kategori_barang_update',
-						'judul' => 'Ubah kategori_barang',
+						'judul' => 'Ubah Kategori Barang',
 
 						//mengirim data kategori_barang yang dipilih ke view
 						'data_kategori_barang_single' => $data_kategori_barang_single,

@@ -26,7 +26,7 @@ class Barang extends CI_Controller {
 		//mengirim data ke view
 		$output = array(
 						'theme_page' => 'barang_read',
-						'judul' => 'Daftar barang',
+						'judul' => 'Daftar Barang',
 
 						//data barang dikirim ke view
 						'data_barang' => $data_barang
@@ -43,7 +43,7 @@ class Barang extends CI_Controller {
 		//mengirim data ke view
 		$output = array(
 						'theme_page' => 'barang_insert',
-						'judul' => 'Tambah barang',
+						'judul' => 'Tambah Barang',
 
 						//mengirim daftar kategori_barang ke view
 						'data_kategori_barang' => $data_kategori_barang,
@@ -90,7 +90,7 @@ class Barang extends CI_Controller {
 		//mengirim data ke view
 		$output = array(
 						'theme_page' => 'barang_update',
-						'judul' => 'Ubah barang',
+						'judul' => 'Ubah Barang',
 
 						//mengirim data barang yang dipilih ke view
 						'data_barang_single' => $data_barang_single,
@@ -139,4 +139,42 @@ class Barang extends CI_Controller {
 		//mengembalikan halaman ke function read
 		redirect('barang/read');
 	}
+
+	public function read_export() {
+		//memanggil function read pada barang model
+		//function read berfungsi mengambil/read data dari table barang di database
+		$data_barang = $this->barang_model->read();
+	
+		//mengirim data ke view
+		$output = array(
+						//memanggil view
+						'judul' => 'Daftar Barang',
+
+						//data barang dikirim ke view
+						'data_barang' => $data_barang
+					);
+
+		//memanggil file view
+		$this->load->view('barang_read', $output);
+	}
+
+	public function data_export() {
+		//memanggil function read pada barang model
+		//function read berfungsi mengambil/read data dari table barang di database
+		$data_barang = $this->barang_model->read();
+	
+		//mengirim data ke view
+		$output = array(
+						//memanggil view
+						'judul' => 'Daftar Barang',
+
+						//data barang dikirim ke view
+						'data_barang' => $data_barang
+					);
+
+		//memanggil file view
+		$this->load->view('barang_data_export', $output);
+	}
+
 }
+

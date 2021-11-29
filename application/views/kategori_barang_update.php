@@ -3,7 +3,7 @@
 <form method="post" action="<?php echo site_url('kategori_barang/update_submit/'.$data_kategori_barang_single['id_kategori']);?>">
 	<table class="table table-striped">
 		<tr>
-			<td>Nama kategori_barang</td>
+			<td>Nama Kategori Barang</td>
 			<!--$data_kategori_barang_single['nama'] : menampilkan data kategori_barang yang dipilih dari database -->
 			<td><input type="text" name="kategori_barang" value="<?php echo $data_kategori_barang_single['kategori_barang'];?>" required="" class="form-control"></td>
 		</tr>

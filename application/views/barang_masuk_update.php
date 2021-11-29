@@ -3,15 +3,15 @@
 <form method="post" action="<?php echo site_url('barang_masuk/update_submit/'.$data_barang_masuk_single['id_barang_masuk']);?>">
 	<table class="table table-striped">
 		<tr>
-			<td>jumlah_masuk</td>
+			<td>Jumlah Masuk</td>
 			<td><input type="text" name="jumlah_masuk" value="<?php echo $data_barang_masuk_single['jumlah_masuk'];?>" required="" class="form-control"></td>
 		</tr>
 		<tr>
-			<td>tanggal_masuk</td>
+			<td>Tanggal Masuk</td>
 			<td><input type="date" name="tanggal_masuk" value="<?php echo $data_barang_masuk_single['tanggal_masuk'];?>" required="" class="form-control"></td>
 		</tr>
 		<tr>
-			<td>Nama barang</td>
+			<td>Nama Barang</td>
 			<!--$data_barang_single['judul'] : menampilkan data barang yang dipilih dari database -->
 			<td>
 				<select name="barang_id" class="form-control">
@@ -24,7 +24,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td>username</td>
+			<td>Username</td>
 			<!--$data_barang_single['judul'] : menampilkan data barang yang dipilih dari database -->
 			<td>
 				<select name="user_id" class="form-control">

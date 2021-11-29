@@ -16,6 +16,7 @@ class User_model extends CI_Model {
 	}
 
 
+
 	//function read berfungsi mengambil/read data dari table user di database
 	public function read_single($username, $password) {
 

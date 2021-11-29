@@ -6,7 +6,7 @@
 <table class="table table-striped">
 	<thead class="thead-dark">
 		<tr>
-			<th>nama kategori_barang</th>
+			<th>Nama Kategori Barang</th>
 			<th>Action</th>
 		</tr>
 	</thead>

@@ -26,7 +26,7 @@ class Barang_keluar extends CI_Controller {
 		//mengirim data ke view
 		$output = array(
 						'theme_page' => 'barang_keluar_read',
-						'judul' => 'Daftar Peminjaman Buku',
+						'judul' => 'Daftar Barang Keluar',
 
 						//data barang_keluar dikirim ke view
 						'data_barang_keluar' => $data_barang_keluar
@@ -45,7 +45,7 @@ class Barang_keluar extends CI_Controller {
 		//mengirim data ke view
 		$output = array(
 						'theme_page' => 'barang_keluar_insert',
-						'judul' => 'Tambah Peminjaman Buku',
+						'judul' => 'Tambah Barang Keluar',
 
 						//mengirim daftar peminjaman ke view
 						'data_user' => $data_user,
@@ -97,7 +97,7 @@ class Barang_keluar extends CI_Controller {
 		//mengirim data ke view
 		$output = array(
 						'theme_page' => 'barang_keluar_update',
-						'judul' => 'Ubah barang_keluar',
+						'judul' => 'Ubah Barang Keluar',
 
 						//mengirim data barang_keluar yang dipilih ke view
 						'data_barang_keluar_single' => $data_barang_keluar_single,
@@ -158,7 +158,7 @@ class Barang_keluar extends CI_Controller {
 		//mengirim data ke view
 		$output = array(
 						//memanggil view
-						'judul' => 'Daftar barang_keluar',
+						'judul' => 'Daftar Barang Keluar',
 
 						//data barang_keluar dikirim ke view
 						'data_barang_keluar' => $data_barang_keluar
@@ -176,7 +176,7 @@ class Barang_keluar extends CI_Controller {
 		//mengirim data ke view
 		$output = array(
 						//memanggil view
-						'judul' => 'Daftar barang_keluar',
+						'judul' => 'Daftar Barang Keluar',
 
 						//data barang_keluar dikirim ke view
 						'data_barang_keluar' => $data_barang_keluar

@@ -1,11 +1,11 @@
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-dark sidebar sidebar-dark accordion" id="accordionSidebar">
 
   <!-- Sidebar - Brand -->
   <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
     <div class="sidebar-brand-icon rotate-n-15">
-      <i class="fas fa-book"></i>
+      <i class=""></i>
     </div>
-    <div class="sidebar-brand-text mx-3">Pengadaan Barang</div>
+    <div class="sidebar-brand-text mx-3">INPINISCARVES</div>
   </a>
 
   <!-- Divider -->
@@ -13,25 +13,25 @@
 
   <li class="nav-item">
     <a class="nav-link" href="<?php echo site_url('barang/read');?>">
-      <i class="fas fa-fw fa-book"></i>
+      <i class="fas fa-briefcase"></i>
       <span>Barang</span></a>
   </li>
   
   <li class="nav-item">
     <a class="nav-link" href="<?php echo site_url('kategori_barang/read');?>">
-      <i class="fas fa-fw fa-book"></i>
+      <i class="fas fa-stream"></i>
       <span>Kategori Barang</span></a>
   </li>
 
   <li class="nav-item">
     <a class="nav-link" href="<?php echo site_url('barang_masuk/read');?>">
-      <i class="fas fa-fw fa-building"></i>
+      <i class="fas fa-download"></i>
       <span>Barang Masuk</span></a>
   </li>
  
   <li class="nav-item">
     <a class="nav-link" href="<?php echo site_url('barang_keluar/read');?>">
-      <i class="fas fa-fw fa-book"></i>
+      <i class="fas fa-upload"></i>
       <span>Barang Keluar</span></a>
   </li>
 

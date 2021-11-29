@@ -1,15 +1,15 @@
 <form method="post" action="<?php echo site_url('barang_keluar/insert_submit/');?>">
 	<table class="table table-striped">
 		<tr>
-			<td>jumlah_keluar</td>
+			<td>Jumlah Keluar</td>
 			<td><input type="text" name="jumlah_keluar" value="" required="" class="form-control"></td>
 		</tr>
 		<tr>
-			<td>tanggal_keluar</td>
+			<td>Tanggal Keluar</td>
 			<td><input type="date" name="tanggal_keluar" value="" required="" class="form-control"></td>
 		</tr>
 		<tr>
-			<td>Nama barang</td>
+			<td>Nama Barang</td>
 			<!--$data_barang_single['judul'] : menampilkan data barang yang dipilih dari database -->
 			<td>
 				<select name="barang_id" class="form-control">
@@ -22,7 +22,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td>username</td>
+			<td>Username</td>
 			<!--$data_barang_single['judul'] : menampilkan data barang yang dipilih dari database -->
 			<td>
 				<select name="user_id" class="form-control">
