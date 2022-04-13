@@ -10,7 +10,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Perpustakaan - <?php echo $judul;;?></title>
+  <title>Inpiniscarves - <?php echo $judul;;?></title>
 
   <!-- css yang digunakan theme -->
   <link href="<?php echo base_url('assets/vendor/fontawesome-free/css/all.min.css');?>" rel="stylesheet" type="text/css"> 
@@ -46,7 +46,10 @@
                   <div class="text-center">
                     <h1 class="h4 text-primary font-weight-bold mb-4">LOGIN</h1>
                   </div>
-                    
+                  <div class="alert alert-info" role="alert">
+                      Website ini dibangun hanya untuk keperluan tugas kuliah, dipersilahkan untuk mengubah data pada website.
+                      untuk login, gunakan username "admin" dan password "admin"
+                  </div>
                   <?php echo validation_errors('<div class="alert alert-danger text-center">', '</div>'); ?>
 
         				  <form method="post" action="<?php echo site_url('user/login/');?>">

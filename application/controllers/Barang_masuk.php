@@ -18,6 +18,30 @@ class Barang_masuk extends CI_Controller {
 		$this->read();
 	}
 
+	public function dashboard() {
+		//memanggil function read pada barang model
+		//function read berfungsi mengambil/read data dari table barang di database
+		$data_barang_masuk3 = $this->barang_masuk_model->read_export_rekap2();
+		$data_barang_masuk2 = $this->barang_masuk_model->read_export_rekap();
+		$data_barang_masuk = $this->barang_masuk_model->read();
+
+		//mengirim data ke view
+		$output = array(
+						'theme_page' => 'barang_masuk_dashboard',
+						'judul' => 'Daftar Barang Masuk',
+
+						//data barang dikirim ke view
+						'data_barang_masuk' => $data_barang_masuk,
+						'data_barang_masuk2' => $data_barang_masuk2,
+						'data_barang_masuk3' => $data_barang_masuk3
+					);
+
+		//memanggil file view
+		$this->load->view('theme/index', $output);
+	}
+
+
+
 	public function read() {
 		//memanggil function read pada barang_masuk model
 		//function read berfungsi mengambil/read data dari table barang_masuk di database
@@ -64,6 +88,9 @@ class Barang_masuk extends CI_Controller {
 		$tanggal_masuk = $this->input->post('tanggal_masuk');
 		$user_id = $this->input->post('user_id');
 		$barang_id = $this->input->post('barang_id');
+		$data_barang_masuk_single = $this->barang_masuk_model->read_single($id_barang_masuk);
+		$data_barang = $this->barang_model->read_single($barang_id);
+		
 
 		//mengirim data ke model
 		$input = array(
@@ -75,9 +102,18 @@ class Barang_masuk extends CI_Controller {
 						'barang_id' => $barang_id,
 					);
 
+					 // update stok barang 
+		$updated_stok = $data_barang['stok'] + $jumlah_masuk;
+		$data_barang = $this->barang_model->update(['stok' => $updated_stok], $data_barang['id_barang']);
+
+        
+
+ 
+
 		//memanggil function insert pada barang_masuk model
 		//function insert berfungsi menyimpan/create data ke table barang_masuk di database
 		$data_barang_masuk = $this->barang_masuk_model->insert($input);
+		
 
 		//mengembalikan halaman ke function read
 		redirect('barang_masuk/read');
@@ -150,7 +186,42 @@ class Barang_masuk extends CI_Controller {
 	}
 
 
-	public function read_export() {
+	public function export_rekap1() {
+		//memanggil function read pada barang_masuk model
+		//function read berfungsi mengambil/read data dari table barang_masuk di database
+		$data_barang_masuk3 = $this->barang_masuk_model->read_export_rekap2();
+	
+		//mengirim data ke view
+		$output = array(
+						//memanggil view
+						'judul' => 'Barang Masuk Rekap',
+
+						//data barang_masuk dikirim ke view
+						'data_barang_masuk3' => $data_barang_masuk3
+					);
+
+		//memanggil file view
+		$this->load->view('barang_masuk_export_rekap1', $output);
+	}
+	
+	public function export_rekap2() {
+		//memanggil function read pada barang_masuk model
+		//function read berfungsi mengambil/read data dari table barang_masuk di database
+		$data_barang_masuk2 = $this->barang_masuk_model->read_export_rekap();
+	
+		//mengirim data ke view
+		$output = array(
+						//memanggil view
+						'judul' => 'Barang Masuk Rekap',
+
+						//data barang_masuk dikirim ke view
+						'data_barang_masuk2' => $data_barang_masuk2
+					);
+
+		//memanggil file view
+		$this->load->view('barang_masuk_export_rekap2', $output);
+	}
+	public function export_detail() {
 		//memanggil function read pada barang_masuk model
 		//function read berfungsi mengambil/read data dari table barang_masuk di database
 		$data_barang_masuk = $this->barang_masuk_model->read();
@@ -158,32 +229,16 @@ class Barang_masuk extends CI_Controller {
 		//mengirim data ke view
 		$output = array(
 						//memanggil view
-						'judul' => 'Daftar Barang Masuk',
+						'judul' => 'Barang Masuk Detail',
 
 						//data barang_masuk dikirim ke view
 						'data_barang_masuk' => $data_barang_masuk
 					);
 
 		//memanggil file view
-		$this->load->view('barang_masuk_read', $output);
+		$this->load->view('barang_masuk_export_detail', $output);
 	}
 
-	public function data_export() {
-		//memanggil function read pada barang_masuk model
-		//function read berfungsi mengambil/read data dari table barang_masuk di database
-		$data_barang_masuk = $this->barang_masuk_model->read();
-	
-		//mengirim data ke view
-		$output = array(
-						//memanggil view
-						'judul' => 'Daftar barang_masuk',
 
-						//data barang_masuk dikirim ke view
-						'data_barang_masuk' => $data_barang_masuk
-					);
-
-		//memanggil file view
-		$this->load->view('barang_masuk_data_export', $output);
-	}
 
 }

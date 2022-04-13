@@ -1,5 +1,5 @@
 <form method="post" action="<?php echo site_url('barang/insert_submit/');?>">
-	<table class="table table-striped">
+	<table class="table table-striped table-responsive">
 		<tr>
 			<td>Nama Barang</td>
 			<td><input type="text" name="nama_barang" value="" required="" class="form-control"></td>

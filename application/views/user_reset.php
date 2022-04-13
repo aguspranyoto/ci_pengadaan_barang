@@ -1,7 +1,7 @@
 <?php echo validation_errors('<div class="alert alert-danger text-center">', '</div>'); ?>
 
 <form method="post" action="<?php echo site_url('user/reset_submit/'.$read_single_id['id']); ?>">
-    <table class="table">
+    <table class="table table-striped table-responsive">
         <tr>
             <td>Password Baru</td>
             <td><input type="password" name="password" value="" required="" class="form-control"></td>

@@ -42,6 +42,7 @@ class Barang_model extends CI_Model {
         return $query->row_array();
 	}
 
+
 	//function insert berfungsi menyimpan/create data ke table barang di database
 	public function insert($input) {
 		//$input = data yang dikirim dari controller
@@ -64,4 +65,57 @@ class Barang_model extends CI_Model {
 		$this->db->where('id_barang', $id_barang);
 		return $this->db->delete('barang');
 	}
+
+	public function read_export_rekap($id = '')
+    {
+        //sql read
+		$this->db->select('COUNT(barang.nama_barang) AS total_barang');
+        $this->db->select('barang.stok AS stok');
+        $this->db->select('kategori_barang.kategori_barang AS kategori_barang_kategori_barang');
+        $this->db->from('barang');
+        $this->db->join('kategori_barang', 'barang.kategori_barang_id = kategori_barang.id_kategori');
+        $this->db->group_by('kategori_barang.kategori_barang');
+
+
+
+        //filter data sesuai id yang dikirim dari controller
+        if ($id != '') {
+            $this->db->where('barang.id_barang', $id);
+        }
+
+        $this->db->order_by('barang.id_barang ASC');
+
+        $query = $this->db->get();
+
+        //$query->result_array = mengirim data ke controller dalam bentuk semua data
+        return $query->result_array();
+    }
+
+	public function chart_pie_rekap($id = '')
+    {
+        //sql read
+		$this->db->select('COUNT(barang.nama_barang) AS total_barang');
+        $this->db->select('barang.stok AS stok');
+        $this->db->select('kategori_barang.kategori_barang AS kategori_barang_kategori_barang');
+        $this->db->from('barang');
+        $this->db->join('kategori_barang', 'barang.kategori_barang_id = kategori_barang.id_kategori');
+        $this->db->group_by('kategori_barang.kategori_barang');
+
+
+
+        //filter data sesuai id yang dikirim dari controller
+        if ($id != '') {
+            $this->db->where('barang.id_barang', $id);
+        }
+
+        $this->db->order_by('barang.id_barang ASC');
+
+        $query = $this->db->get();
+
+        //$query->result_array = mengirim data ke controller dalam bentuk semua data
+        return $query->result_array();
+    }
+
+
+
 }

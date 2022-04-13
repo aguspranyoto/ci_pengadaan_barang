@@ -1,6 +1,6 @@
 <!--$data_user_single['id'] : perlu diletakan di url agar bisa diterima/tangkap pada controller (sbg penanda id yang akan diupdate) -->
 <form method="post" action="<?php echo site_url('user/update_submit/'.$data_user_single['id']);?>">
-	<table class="table table-striped">
+	<table class="table table-striped table-responsive">
 		<tr>
 			<td>Username</td>
 			<!--$data_user_single['nama'] : menampilkan data user yang dipilih dari database -->

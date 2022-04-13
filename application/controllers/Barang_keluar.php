@@ -18,6 +18,29 @@ class Barang_keluar extends CI_Controller {
 		$this->read();
 	}
 
+	public function dashboard() {
+		//memanggil function read pada barang model
+		//function read berfungsi mengambil/read data dari table barang di database
+		$data_barang_keluar3 = $this->barang_keluar_model->read_export_rekap2();
+		$data_barang_keluar2 = $this->barang_keluar_model->read_export_rekap();
+		$data_barang_keluar = $this->barang_keluar_model->read();
+
+		//mengirim data ke view
+		$output = array(
+						'theme_page' => 'barang_keluar_dashboard',
+						'judul' => 'Daftar Barang Keluar',
+
+						//data barang dikirim ke view
+						'data_barang_keluar' => $data_barang_keluar,
+						'data_barang_keluar2' => $data_barang_keluar2,
+						'data_barang_keluar3' => $data_barang_keluar3
+					);
+
+		//memanggil file view
+		$this->load->view('theme/index', $output);
+	}
+
+
 	public function read() {
 		//memanggil function read pada barang_keluar model
 		//function read berfungsi mengambil/read data dari table barang_keluar di database
@@ -64,6 +87,9 @@ class Barang_keluar extends CI_Controller {
 		$tanggal_keluar = $this->input->post('tanggal_keluar');
 		$user_id = $this->input->post('user_id');
 		$barang_id = $this->input->post('barang_id');
+		$data_barang_keluar_single = $this->barang_keluar_model->read_single($id_barang_keluar);
+		$data_barang = $this->barang_model->read_single($barang_id);
+		
 
 		//mengirim data ke model
 		$input = array(
@@ -75,9 +101,18 @@ class Barang_keluar extends CI_Controller {
 						'barang_id' => $barang_id,
 					);
 
+					 // update stok barang 
+		$updated_stok = $data_barang['stok'] - $jumlah_keluar;
+		$data_barang = $this->barang_model->update(['stok' => $updated_stok], $data_barang['id_barang']);
+
+        
+
+ 
+
 		//memanggil function insert pada barang_keluar model
 		//function insert berfungsi menyimpan/create data ke table barang_keluar di database
 		$data_barang_keluar = $this->barang_keluar_model->insert($input);
+		
 
 		//mengembalikan halaman ke function read
 		redirect('barang_keluar/read');
@@ -150,40 +185,58 @@ class Barang_keluar extends CI_Controller {
 	}
 
 
-	public function read_export() {
+	public function export_rekap1() {
+		//memanggil function read pada barang_keluar model
+		//function read berfungsi mengambil/read data dari table barang_keluar di database
+		$data_barang_keluar3 = $this->barang_keluar_model->read_export_rekap2();
+	
+		//mengirim data ke view
+		$output = array(
+						//memanggil view
+						'judul' => 'Barang Keluar Rekap',
+
+						//data barang_keluar dikirim ke view
+						'data_barang_keluar3' => $data_barang_keluar3
+					);
+
+		//memanggil file view
+		$this->load->view('barang_keluar_export_rekap1', $output);
+	}
+	
+	public function export_rekap2() {
+		//memanggil function read pada barang_keluar model
+		//function read berfungsi mengambil/read data dari table barang_keluar di database
+		$data_barang_keluar2 = $this->barang_keluar_model->read_export_rekap();
+	
+		//mengirim data ke view
+		$output = array(
+						//memanggil view
+						'judul' => 'Barang Keluar Rekap',
+
+						//data barang_keluar dikirim ke view
+						'data_barang_keluar2' => $data_barang_keluar2
+					);
+
+		//memanggil file view
+		$this->load->view('barang_keluar_export_rekap2', $output);
+	}
+	public function export_detail() {
 		//memanggil function read pada barang_keluar model
 		//function read berfungsi mengambil/read data dari table barang_keluar di database
 		$data_barang_keluar = $this->barang_keluar_model->read();
 	
 		//mengirim data ke view
 		$output = array(
-						//memanggil view
-						'judul' => 'Daftar Barang Keluar',
+						// judul' => 'Daftar Barang Keluar',
+						'judul' => 'Barang Keluar Detail',
 
 						//data barang_keluar dikirim ke view
 						'data_barang_keluar' => $data_barang_keluar
 					);
 
 		//memanggil file view
-		$this->load->view('barang_keluar_read', $output);
+		$this->load->view('barang_keluar_export_detail', $output);
 	}
 
-	public function data_export() {
-		//memanggil function read pada barang_keluar model
-		//function read berfungsi mengambil/read data dari table barang_keluar di database
-		$data_barang_keluar = $this->barang_keluar_model->read();
-	
-		//mengirim data ke view
-		$output = array(
-						//memanggil view
-						'judul' => 'Daftar Barang Keluar',
-
-						//data barang_keluar dikirim ke view
-						'data_barang_keluar' => $data_barang_keluar
-					);
-
-		//memanggil file view
-		$this->load->view('barang_keluar_data_export', $output);
-	}
 
 }

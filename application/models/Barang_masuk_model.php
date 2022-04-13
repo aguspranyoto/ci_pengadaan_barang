@@ -36,6 +36,8 @@ class Barang_masuk_model extends CI_Model {
         return $query->result_array();
 	}
 
+
+
 	//function read berfungsi mengambil/read data dari table barang_masuk di database
 	public function read_single($id_barang_masuk) {
 
@@ -75,4 +77,81 @@ class Barang_masuk_model extends CI_Model {
 		$this->db->where('id_barang_masuk', $id_barang_masuk);
 		return $this->db->delete('barang_masuk');
 	}
+
+	public function read_export_rekap($id = '')
+    {
+        //sql read
+		$this->db->select('barang.nama_barang AS nama_barang_masuk');
+        $this->db->select('barang_masuk.tanggal_masuk AS tanggal_masuk_barang_masuk');
+        $this->db->select('SUM(barang_masuk.jumlah_masuk) AS total_jumlah_masuk');
+        $this->db->from('barang_masuk');
+        $this->db->join('barang', 'barang_masuk.barang_id = barang.id_barang');
+        $this->db->group_by('barang.nama_barang');
+
+
+
+        //filter data sesuai id yang dikirim dari controller
+        if ($id != '') {
+            $this->db->where('barang_masuk.id_barang_masuk', $id);
+        }
+
+        $this->db->order_by('barang_masuk.id_barang_masuk ASC');
+
+        $query = $this->db->get();
+
+        //$query->result_array = mengirim data ke controller dalam bentuk semua data
+        return $query->result_array();
+    }
+
+	public function read_export_rekap2($id = '')
+    {
+        //sql read
+		$this->db->select('barang.nama_barang AS nama_barang_masuk');
+        $this->db->select('barang_masuk.tanggal_masuk AS tanggal_masuk_barang_masuk');
+        $this->db->select('SUM(barang_masuk.jumlah_masuk) AS total_jumlah_masuk');
+        $this->db->from('barang_masuk');
+        $this->db->join('barang', 'barang_masuk.barang_id = barang.id_barang');
+        $this->db->group_by('barang_masuk.tanggal_masuk');
+
+
+
+        //filter data sesuai id yang dikirim dari controller
+        if ($id != '') {
+            $this->db->where('barang_masuk.id_barang_masuk', $id);
+        }
+
+        $this->db->order_by('barang_masuk.id_barang_masuk ASC');
+
+        $query = $this->db->get();
+
+        //$query->result_array = mengirim data ke controller dalam bentuk semua data
+        return $query->result_array();
+    }
+
+	public function chart_pie_rekap($id = '')
+    {
+        //sql read
+		$this->db->select('barang.nama_barang AS nama_barang_masuk');
+        $this->db->select('barang_masuk.tanggal_masuk AS tanggal_masuk_barang_masuk');
+        $this->db->select('SUM(barang_masuk.jumlah_masuk) AS total_jumlah_masuk');
+        $this->db->from('barang_masuk');
+        $this->db->join('barang', 'barang_masuk.barang_id = barang.id_barang');
+        $this->db->group_by('barang.nama_barang');
+
+
+
+        //filter data sesuai id yang dikirim dari controller
+        if ($id != '') {
+            $this->db->where('barang_masuk.id_barang_masuk', $id);
+        }
+
+        $this->db->order_by('barang_masuk.id_barang_masuk ASC');
+
+        $query = $this->db->get();
+
+        //$query->result_array = mengirim data ke controller dalam bentuk semua data
+        return $query->result_array();
+    }
+
+
 }

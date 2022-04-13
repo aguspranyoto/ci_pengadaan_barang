@@ -21,7 +21,7 @@ Highcharts.chart('container', {
         type: 'column'
     },
     title: {
-        text: 'Perbandingan Jumlah Stok Antar barang'
+        text: 'Perbandingan Jumlah Stok  barang'
     },
     xAxis: {
         categories: [

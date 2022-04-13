@@ -1,5 +1,5 @@
 <form method="post" action="<?php echo site_url('user/insert_submit/');?>" >
-	<table class="table table-striped">
+	<table class="table table-striped table-responsive">
 		<tr>
 			<td>Username</td>
 			<td><input class="form-control" type="text" name="username" value="" required=""></td>

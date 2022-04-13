@@ -1,7 +1,7 @@
 
 <!--$data_barang_single['id'] : perlu diletakan di url agar bisa diterima/tangkap pada controller (sbg penanda id yang akan diupdate) -->
 <form method="post" action="<?php echo site_url('barang/update_submit/'.$data_barang_single['id_barang']);?>">
-	<table class="table table-striped">
+	<table class="table table-striped table-responsive">
 		<tr>
 			<td>Nama Barang</td>
 			<!--$data_barang_single['nama'] : menampilkan data barang yang dipilih dari database -->
@@ -18,9 +18,11 @@
 			<td>
 				<select name="kategori_barang_id" class="form-control">
 				<?php foreach($data_kategori_barang as $kategori_barang):?>
-				<option value="<?php echo $kategori_barang['id_kategori'];?>">
-					<?php echo $kategori_barang['kategori_barang'];?>
-				</option>
+					<?php if($kategori_barang['id_kategori'] == $data_barang_single['kategori_barang_id']):?>
+					<option value="<?php echo $kategori_barang['id_kategori'];?>" selected><?php echo $kategori_barang['kategori_barang'];?></option>
+					<?php else:?>
+					<option value="<?php echo $kategori_barang['id_kategori'];?>"><?php echo $kategori_barang['kategori_barang'];?></option>
+					<?php endif;?>
 				<?php endforeach;?>
 				</select>
 			</td>

@@ -36,6 +36,88 @@ class Barang extends CI_Controller {
 		$this->load->view('theme/index', $output);
 	}
 
+	public function upload() {
+    	$id = $this->uri->segment(3);
+		
+		$data_barang_single = $this->barang_model->read_single($id);
+
+		$data_kategori_barang = $this->kategori_barang_model->read();
+
+		$output = array(
+						'theme_page' => 'barang_upload',
+						'judul' => 'Upload barang',
+
+						'data_barang_single' => $data_barang_single,
+
+						'data_kategori_barang' => $data_kategori_barang,
+					);
+
+		$this->load->view('theme/index', $output);
+	}
+	public function upload_submit() {
+
+		$config['upload_path']          = './upload_folder/';
+		$config['allowed_types']        = 'gif|jpg|png';
+	    $config['max_size']             = 10000;
+	    $config['encrypt_name']         = TRUE;
+	    $this->load->library('upload', $config);
+
+		if ( ! $this->upload->do_upload('cover')) {
+
+			$id = $this->uri->segment(3);
+
+			$data_barang_single = $this->barang_model->read_single($id);
+
+			$response = $this->upload->display_errors();
+
+			$output = array(
+							'judul' => 'Upload File',
+							'response' => $response,
+
+							'data_barang_single' => $data_barang_single,
+
+						);
+			$this->load->view('barang_upload', $output);
+
+		} else {
+			
+
+			$id = $this->uri->segment(3);
+
+			$upload_data = $this->upload->data();
+			$file_name = $upload_data['file_name'];
+
+			$input = array(
+							'cover' => $file_name,
+						);
+			$data_barang = $this->barang_model->update($input, $id);
+			
+			redirect('barang/read');	        }
+	}
+
+
+
+
+	public function dashboard() {
+		//memanggil function read pada barang model
+		//function read berfungsi mengambil/read data dari table barang di database
+		$data_barang2 = $this->barang_model->read_export_rekap();
+		$data_barang = $this->barang_model->read();
+
+		//mengirim data ke view
+		$output = array(
+						'theme_page' => 'barang_dashboard',
+						'judul' => 'Daftar Barang',
+
+						//data barang dikirim ke view
+						'data_barang' => $data_barang,
+						'data_barang2' => $data_barang2
+					);
+
+		//memanggil file view
+		$this->load->view('theme/index', $output);
+	}
+
 	public function insert() {
 		//mengambil daftar kategori_barang dari table kategori_barang
 		$data_kategori_barang = $this->kategori_barang_model->read();
@@ -52,6 +134,7 @@ class Barang extends CI_Controller {
 		//memanggil file view
 		$this->load->view('theme/index', $output);
 	}
+
 
 	public function insert_submit() {
 		//menangkap data input dari view
@@ -140,41 +223,61 @@ class Barang extends CI_Controller {
 		redirect('barang/read');
 	}
 
-	public function read_export() {
-		//memanggil function read pada barang model
-		//function read berfungsi mengambil/read data dari table barang di database
+
+	public function export_rekap1() {
+		//memanggil function read pada barang_masuk model
+		//function read berfungsi mengambil/read data dari table barang_masuk di database
+		$data_barang2 = $this->barang_model->read_export_rekap();
+	
+		//mengirim data ke view
+		$output = array(
+						//memanggil view
+						'judul' => 'Barang Rekap',
+
+						//data barang dikirim ke view
+						'data_barang2' => $data_barang2
+					);
+
+		//memanggil file view
+		$this->load->view('barang_export_rekap1', $output);
+	}
+
+	public function export_rekap2() {
+		//memanggil function read pada barang_masuk model
+		//function read berfungsi mengambil/read data dari table barang_masuk di database
+		$data_barang2 = $this->barang_model->read_export_rekap();
+	
+		//mengirim data ke view
+		$output = array(
+						//memanggil view
+						'judul' => 'Barang Rekap',
+
+						//data barang dikirim ke view
+						'data_barang2' => $data_barang2
+					);
+
+		//memanggil file view
+		$this->load->view('barang_export_rekap2', $output);
+	}
+
+	public function export_detail() {
+		//memanggil function read pada barang_masuk model
+		//function read berfungsi mengambil/read data dari table barang_masuk di database
 		$data_barang = $this->barang_model->read();
 	
 		//mengirim data ke view
 		$output = array(
 						//memanggil view
-						'judul' => 'Daftar Barang',
+						'judul' => 'Barang Detail',
 
 						//data barang dikirim ke view
 						'data_barang' => $data_barang
 					);
 
 		//memanggil file view
-		$this->load->view('barang_read', $output);
+		$this->load->view('barang_export_detail', $output);
 	}
 
-	public function data_export() {
-		//memanggil function read pada barang model
-		//function read berfungsi mengambil/read data dari table barang di database
-		$data_barang = $this->barang_model->read();
-	
-		//mengirim data ke view
-		$output = array(
-						//memanggil view
-						'judul' => 'Daftar Barang',
-
-						//data barang dikirim ke view
-						'data_barang' => $data_barang
-					);
-
-		//memanggil file view
-		$this->load->view('barang_data_export', $output);
-	}
 
 }
 

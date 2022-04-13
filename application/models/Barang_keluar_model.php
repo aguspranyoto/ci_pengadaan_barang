@@ -75,4 +75,81 @@ class Barang_keluar_model extends CI_Model {
 		$this->db->where('id_barang_keluar', $id_barang_keluar);
 		return $this->db->delete('barang_keluar');
 	}
+
+	public function read_export_rekap($id = '')
+    {
+        //sql read
+		$this->db->select('barang.nama_barang AS nama_barang_keluar');
+        $this->db->select('barang_keluar.tanggal_keluar AS tanggal_keluar_barang_keluar');
+        $this->db->select('SUM(barang_keluar.jumlah_keluar) AS total_jumlah_keluar');
+        $this->db->from('barang_keluar');
+        $this->db->join('barang', 'barang_keluar.barang_id = barang.id_barang');
+        $this->db->group_by('barang.nama_barang');
+
+
+
+        //filter data sesuai id yang dikirim dari controller
+        if ($id != '') {
+            $this->db->where('barang_keluar.id_barang_keluar', $id);
+        }
+
+        $this->db->order_by('barang_keluar.id_barang_keluar ASC');
+
+        $query = $this->db->get();
+
+        //$query->result_array = mengirim data ke controller dalam bentuk semua data
+        return $query->result_array();
+    }
+	
+	public function read_export_rekap2($id = '')
+    {
+        //sql read
+		$this->db->select('barang.nama_barang AS nama_barang_keluar');
+        $this->db->select('barang_keluar.tanggal_keluar AS tanggal_keluar_barang_keluar');
+        $this->db->select('SUM(barang_keluar.jumlah_keluar) AS total_jumlah_keluar');
+        $this->db->from('barang_keluar');
+        $this->db->join('barang', 'barang_keluar.barang_id = barang.id_barang');
+        $this->db->group_by('barang_keluar.tanggal_keluar');
+
+
+
+        //filter data sesuai id yang dikirim dari controller
+        if ($id != '') {
+            $this->db->where('barang_keluar.id_barang_keluar', $id);
+        }
+
+        $this->db->order_by('barang_keluar.id_barang_keluar ASC');
+
+        $query = $this->db->get();
+
+        //$query->result_array = mengirim data ke controller dalam bentuk semua data
+        return $query->result_array();
+    }
+	public function chart_pie_rekap($id = '')
+    {
+        //sql read
+		$this->db->select('barang.nama_barang AS nama_barang_keluar');
+        $this->db->select('barang_keluar.tanggal_keluar AS tanggal_keluar_barang_keluar');
+        $this->db->select('SUM(barang_keluar.jumlah_keluar) AS total_jumlah_keluar');
+        $this->db->from('barang_keluar');
+        $this->db->join('barang', 'barang_keluar.barang_id = barang.id_barang');
+        $this->db->group_by('barang.nama_barang');
+
+
+
+        //filter data sesuai id yang dikirim dari controller
+        if ($id != '') {
+            $this->db->where('barang_keluar.id_barang_keluar', $id);
+        }
+
+        $this->db->order_by('barang_keluar.id_barang_keluar ASC');
+
+        $query = $this->db->get();
+
+        //$query->result_array = mengirim data ke controller dalam bentuk semua data
+        return $query->result_array();
+    }
+
 }
+
+

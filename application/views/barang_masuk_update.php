@@ -1,7 +1,7 @@
 
 <!--$data_barang_masuk_single['id'] : perlu diletakan di url agar bisa diterima/tangkap pada controller (sbg penanda id yang akan diupdate) -->
 <form method="post" action="<?php echo site_url('barang_masuk/update_submit/'.$data_barang_masuk_single['id_barang_masuk']);?>">
-	<table class="table table-striped">
+	<table class="table table-striped table-responsive">
 		<tr>
 			<td>Jumlah Masuk</td>
 			<td><input type="text" name="jumlah_masuk" value="<?php echo $data_barang_masuk_single['jumlah_masuk'];?>" required="" class="form-control"></td>

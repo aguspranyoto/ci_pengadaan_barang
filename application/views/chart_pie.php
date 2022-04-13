@@ -51,7 +51,7 @@
 
 	        //format data jumlah_stok barang
 	        data: [
-	        		<?php foreach($data_barang as $barang):?>
+	        		<?php foreach($data_barang2 as $barang):?>
 	        		{
 	        			name: '<?php echo $barang['nama_barang'];?>',
 	        			y: <?php echo $barang['stok'];?>},

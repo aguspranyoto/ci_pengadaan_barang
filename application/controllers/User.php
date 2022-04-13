@@ -45,7 +45,7 @@ class User extends CI_Controller {
 
 				//redirect ke provinsi (bisa dirubah ke controller & fungsi manapun)
                 
-				redirect('user/read');
+				redirect('barang/read');
 			} 
 
 		}

@@ -2,7 +2,7 @@
 <a href="<?php echo site_url('user/insert');?>"  class="btn btn-primary">Tambah Data</a>
 <br /><br />
 
-<table class="table table-striped">
+<table class="table table-striped table-responsive">
 	<thead class="thead-dark">
 		<tr>
 			<th>Username</th>

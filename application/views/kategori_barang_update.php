@@ -1,7 +1,7 @@
 
 <!--$data_kategori_barang_single['id'] : perlu diletakan di url agar bisa diterima/tangkap pada controller (sbg penanda id yang akan diupdate) -->
 <form method="post" action="<?php echo site_url('kategori_barang/update_submit/'.$data_kategori_barang_single['id_kategori']);?>">
-	<table class="table table-striped">
+	<table class="table table-striped table-responsive">
 		<tr>
 			<td>Nama Kategori Barang</td>
 			<!--$data_kategori_barang_single['nama'] : menampilkan data kategori_barang yang dipilih dari database -->

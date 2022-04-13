@@ -1,5 +1,5 @@
 <form method="post" action="<?php echo site_url('kategori_barang/insert_submit/');?>">
-	<table class="table table-striped">
+	<table class="table table-striped table-responsive">
 		<tr>
 			<td>Nama Kategori Barang</td>
 			<td><input type="text" name="kategori_barang" value="" required="" class="form-control"></td>
